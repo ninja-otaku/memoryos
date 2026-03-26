@@ -1,9 +1,8 @@
 ﻿from __future__ import annotations
 
-from typing import Any, Optional
+from typing import Any
 
 from memoryos.core import MemoryOS
-
 
 try:  # pragma: no cover
     from langchain.memory import BaseMemory  # type: ignore

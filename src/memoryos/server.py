@@ -8,7 +8,6 @@ from pydantic import BaseModel, Field
 
 from memoryos.core import MemoryOS, MemoryOSConfig
 
-
 app = FastAPI(title='MemoryOS')
 
 

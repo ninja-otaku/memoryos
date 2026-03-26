@@ -8,7 +8,7 @@ import sqlite3
 import time
 import uuid
 from dataclasses import dataclass
-from typing import Any, Literal, Optional
+from typing import Any, Literal
 
 import numpy as np
 from pydantic import BaseModel, Field
@@ -21,7 +21,7 @@ class Memory(BaseModel):
     id: str
     memory_type: MemoryType
     content: str
-    score: Optional[float] = None
+    score: float | None = None
     metadata: dict[str, Any] = Field(default_factory=dict)
 
 
@@ -344,7 +344,7 @@ class EpisodicMemory:
     def consolidate_to_semantic(
         self,
         *,
-        semantic: 'SemanticMemory',
+        semantic: SemanticMemory,
         importance_threshold: float,
         retention_threshold: float,
     ) -> None:
@@ -722,7 +722,7 @@ class ProceduralMemory:
         )
         return template_id
 
-    def match(self, *, task_description: str) -> Optional[Memory]:
+    def match(self, *, task_description: str) -> Memory | None:
         templates = self.store.list_templates()
         if not templates:
             return None
