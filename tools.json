@@ -1,0 +1,47 @@
+﻿[
+  {
+    " name\: \remember_tool\,
+ \description\: \Store an episodic event memory.\,
+ \input_schema\: {
+ \type\: \object\,
+ \properties\: {
+ \event\: { \type\: \string\, \description\: \Event description\ },
+ \importance\: { \type\: \number\, \description\: \Importance in [0,1]\ }
+ },
+ \required\: [\event\],
+ \additionalProperties\: false
+ }
+ },
+ {
+ \name\: \recall_tool\,
+ \description\: \Recall memories by semantic query or recent episodic relevance.\,
+ \input_schema\: {
+ \type\: \object\,
+ \properties\: {
+ \query\: { \type\: \string\ },
+ \memory_type\: { \type\: \string\, \enum\: [\all\, \episodic\, \semantic\, \procedural\], \default\: \all\ },
+ \k\: { \type\: \integer\, \minimum\: 1, \default\: 5 }
+ },
+ \required\: [\query\],
+ \additionalProperties\: false
+ }
+ },
+ {
+ \name\: \forget_tool\,
+ \description\: \Forget low-importance episodic memories older than N days.\,
+ \input_schema\: {
+ \type\: \object\,
+ \properties\: {
+ \older_than_days\: { \type\: \integer\, \minimum\: 0 },
+ \min_importance\: { \type\: \number\, \minimum\: 0, \maximum\: 1, \default\: 0.0 }
+ },
+ \required\: [\older_than_days\],
+ \additionalProperties\: false
+ }
+ },
+ {
+ \name\: \get_memory_summary_tool\,
+ \description\: \Get counts and basic statistics about memory stores.\,
+ \input_schema\: { \type\: \object\, \properties\: {}, \additionalProperties\: false }
+ }
+]

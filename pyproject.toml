@@ -1,0 +1,55 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "memoryos"
+version = "0.1.0"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+description = "Episodic + semantic memory architecture for long-running AI agents"
+readme = "README.md"
+
+[project.urls]
+Homepage = "https://github.com/ninja-otaku/memoryos"
+Issues = "https://github.com/ninja-otaku/memoryos/issues"
+
+[project.scripts]
+memoryos-server = "memoryos.server:main"
+
+[project.dependencies]
+fastapi = "*"
+uvicorn = "*"
+pydantic = "*"
+networkx = "*"
+numpy = "*"
+
+[project.optional-dependencies]
+full = [
+    "chromadb",
+    "sentence-transformers",
+    "matplotlib",
+]
+dev = [
+    "pytest",
+    "ruff",
+    "mypy",
+    "hypothesis",
+    "httpx",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/memoryos"]
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP"]
+
+[tool.mypy]
+strict = true
+python_version = "3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
