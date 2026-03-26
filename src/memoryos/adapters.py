@@ -5,12 +5,12 @@ from typing import Any
 from memoryos.core import MemoryOS
 
 try:  # pragma: no cover
-    from langchain.memory import BaseMemory  # type: ignore
+    from langchain.memory import BaseMemory  # type: ignore[import-untyped]
 except Exception:  # pragma: no cover
-    BaseMemory = object  # type: ignore
+    BaseMemory = object  # type: ignore[assignment,misc]
 
 
-class MemoryOSChatMemory(BaseMemory):  # pragma: no cover
+class MemoryOSChatMemory(BaseMemory):  # type: ignore[misc]  # pragma: no cover
     '''Minimal LangChain BaseMemory adapter (dependency-free at runtime).'''
 
     def __init__(self, memory_os: MemoryOS, *, query_key: str = 'input') -> None:

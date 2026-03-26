@@ -525,7 +525,7 @@ class SemanticMemory:
         metas = res.get('metadatas') or [[]]
         dists = res.get('distances') or [[]]
 
-        out: list[Memory] = []
+        out = []  # list[Memory]
         for doc, meta, dist in zip(docs[0], metas[0], dists[0]):
             dist_f = float(dist)
             sim = 1.0 - dist_f
